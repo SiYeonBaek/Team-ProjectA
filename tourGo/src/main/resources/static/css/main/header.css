@@ -1,4 +1,7 @@
-
+header {
+	
+	margin-top: 75px;
+}
 
 .nav_all {
 	margin: 0;
@@ -13,11 +16,13 @@
 	height: 75px;
 	padding: 1rem;
 	align-items: center;
+	box-shadow : 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%) !important;
 }
 
 .nav_all a {
 	text-decoration: none;
 	color: black;
+	
 }
 
 .nav_all a:hover {
@@ -34,6 +39,7 @@
 	display: flex;
 	align-items: center;
 }
+.nav_items>a{padding: 1rem;}
 
 .nav_content {
 	margin: 0px 20px;
@@ -60,18 +66,24 @@
 .dropdown-content {
 	display: none;
 	position: absolute;
+	margin-top: 1.4rem;
 	width: 100%;
 	z-index: 1;
 	/*다른 요소들보다 앞에 배치*/
 }
+.dropbtn{padding: 1rem; padding-bottom: 2rem;}
 
 .dropdown-content a {
 	display: block;
 	width: 100%;
-	margin: 10px 0;
+	border-top: 2px solid #f2f2f2;
+	padding:1rem;
 }
+.dropdown-content a:hover{background-color: #ddd;}
 
 .nav_dropdown:hover .dropdown-content {
 	display: block;
 	color: gray;
+	background-color: #fff;
+
 }

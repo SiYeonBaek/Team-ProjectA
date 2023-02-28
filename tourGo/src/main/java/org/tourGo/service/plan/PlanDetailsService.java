@@ -156,7 +156,7 @@ public class PlanDetailsService {
 	}
 	
 	
-	
+	//toDto toEntity 메서드s
 	   public static PlanDetailsRq toDto(PlanDetails entity) {
 
 	    	return PlanDetailsRq.builder()
@@ -168,7 +168,7 @@ public class PlanDetailsService {
 	    			.address(entity.getAddress())
 	    			.day(entity.getDay())
 	    			.firstimage(entity.getFirstimage())
-	    			.sigungu(entity.getSigungu())
+	    		
 	    			.mapx(entity.getMapx())
 	    			.mapy(entity.getMapy())
 	    			.tel(entity.getTel())
@@ -186,7 +186,7 @@ public class PlanDetailsService {
 	    			.address(planDetails.getAddress())
 	    			.day(planDetails.getDay())
 	    			.firstimage(planDetails.getFirstimage())
-	    			.sigungu(planDetails.getSigungu())
+	    		
 	    			.mapx(planDetails.getMapx())
 	    			.mapy(planDetails.getMapy())
 	    			.tel(planDetails.getTel())
@@ -203,7 +203,7 @@ public class PlanDetailsService {
 	    			.address(planDetails.getAddress())
 	    			.day(planDetails.getDay())
 	    			.firstimage(planDetails.getFirstimage())
-	    			.sigungu(planDetails.getSigungu())
+	    			
 	    			.mapx(planDetails.getMapx())
 	    			.mapy(planDetails.getMapy())
 	    			.tel(planDetails.getTel())
@@ -251,6 +251,8 @@ public class PlanDetailsService {
 	    	
 	    	return list;
 	    }
+	    
+	  //toDto toEntity 메서드e
 	
 	
 }

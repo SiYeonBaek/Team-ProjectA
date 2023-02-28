@@ -5,73 +5,112 @@
 <main layout:fragment="content">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<link th:href="@{/css/plan/readwrite.css}" rel="stylesheet"
+<link th:href="@{/css/plan/readview.css}" rel="stylesheet"
 	type="text/css">
+
 
  <input type="hidden" id="plannerNo" th:value="${planner.plannerNo}">
 
-<div style="margin-top: 100px; border:1px solid red;">
 
-<div style="border:1px solid blue;    display: flex;
-    justify-content: center;">
+<div class="allviewpage">
+	<div class="titleview">
+		<div class="flex form-group">
+			<div class="width-30">
+				<span>여행제목</span>
+			</div>
+			<div class="width-70">
+				<span th:text="${planner.title}"> </span>
+			</div>
+		</div>
 
-<div>
-<span th:text="${planner.planType}"style="float:left; font-size:40px; font-weight:bold"></span>
 
-</div>
+		<div class="flex form-group">
+			<div class="width-30">여행 시작일</div>
+			<div class="width-70">
+				<span th:text="${planner.sdate}"></span>
+			</div>
+		</div>
+		<div class="flex form-group">
+			<div class="width-30">
+			<span>여행 종료일</span>
+			</div>
+			<div class="width-70">
+				<span th:text="${planner.edate}"> </span>
+			</div>
+		</div>
 
-<div style="text-align: center;">
+		<div class="flex form-group">
+			<div class="width-30">여행타입</div>
+			<div class="width-70">
+				<span th:text="${planner.planType}"> </span>
+			</div>
+		</div>
 
-				<span th:text="${planner.title}"style="font-size:30px;"> </span>
-				
-				<br>
-				<span th:text="${planner.sdate}" style="font-size:20px;"></span>
-				<span  style="font-size:20px">~</span>
-				 <span th:text="${planner.edate}" style="font-size:20px;"> </span><br>
-				 <span th:text="${planner.planSize}" style="font-size:20px;"> </span><span>명</span><br>
-				
-				
-				<!-- <span th:text="${planner.memo}" style="font-size:40px;">메모메모</span><br> -->
-				<span>메모</span> <br>
-			<span style="font-size:40px;">조회수</span>
-				<span th:text="${planner.PlannerRead}" style="font-size:40px;"></span>
-<br>
+		<div class="flex form-group">
+			<div class="width-30">여행인원</div>
+			<div class="width-70">
+				<span th:text="${planner.planSize}"> </span>
+			</div>
+		</div>
 
+		<div class="flex form-group">
+			<div class="width-30">메모</div>
+			<div class="width-70">
+				<span th:text="${planner.memo}"> </span>
+			</div>
+		</div>
+
+
+		<div class="flex form-group">
+			<div class="width-30">
+				<label class=title>공개여부</label>
+			</div>
+			<div class="width-70">
+				<span th:if="${planner.open.toString().equals('true')}"> 공개 </span>
+			</div>
+		</div>
+
+		<div class="flex form-group">
+			<div class="width-30">조회수</div>
+			<div class="width-70">
+				<span th:text="${planner.PlannerRead}"> </span>
+
+			</div>
+		</div>
+
+		<div class="flex form-group">
+			<div class="width-30">
 				<span class="liked"> <input th:if="${like}" type="hidden"
 					id="uid" th:value="${like.uid}"> <i
 					class="fa-regular fa-heart toggleLiked"
 					th:classappend="${user == null }? 'login_required' : ''"></i>
 				</span>
-
-
+			</div>
+			<div class="width-70">
 				<span>좋아요</span> <span th:text="${planner.totalLikes}"
 					id="totalLikes"></span>
-</div>
-</div>
+			</div>
+		</div>
 
-		<div style="display: grid;
-    grid-template-columns: repeat(3,320px);
-    place-content: center;
-    margin-bottom: 40px;
-    justify-items: center;" >
+	</div>
+
+	<div>
+		<div class="plannerview">
 			<th:block th:each="li,status : ${list}" th:object="${li}">
-				<div class="plannercontent" style="word-break:break-all; text-align:center;	">
-				<span th:text="|DAY : *{day}|"> </span>
+				<div class="plannercontent">
 					<img style="" th:src=*{firstimage}>
 					<br> <span class="plantitle" th:text="*{title}"></span> <br>
 					<span th:text="*{address}"> </span> <br> <span name="tel"
-						th:text="*{tel}"></span> <br> 
-						
-						
-						<span th:text="*{stime}? |*{stime}| : ''"></span>
-						
-					<span
-						th:text="*{etime}? | *{etime}| : ''"></span>
-					<br> 
-					</div>
+						th:text="|Tel : *{tel}|"></span> <br> <span
+						th:text="*{stime}? |시작시간 : *{stime}| : '시작시간 : 시작시간을 지정하지않았습니다.'"></span>
+					<br> <span
+						th:text="*{etime}? |종료시간 : *{etime}| : '종료시간 : 종료시간을 지정하지않았습니다.'"></span>
+					<br> <span th:text="|DAY : *{day}|"> </span> <br>
+				</div>
 			</th:block>
 		</div>
-
+	</div>
+</div>
 
 <script type="text/javascript" th:src="@{/js/plan/makePlan/like.js}"></script>
 
@@ -79,7 +118,10 @@
 
 
 
-</div>
+
+
+
+</main>
 
 
 </main>

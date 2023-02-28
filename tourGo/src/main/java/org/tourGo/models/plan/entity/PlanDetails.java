@@ -35,7 +35,6 @@ public class PlanDetails extends BaseEntity {
 	@Column(nullable=true)
     private Integer day; // day1,day2...등 일자 표시용
     private String firstimage;//관광지 이미지
-    private String sigungu;//시,군,구
 	private Double mapx;
 	private Double mapy;
 	private String tel;//전화번호

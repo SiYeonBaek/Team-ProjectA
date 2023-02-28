@@ -10,7 +10,7 @@ import javax.persistence.Column;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.tourGo.models.plan.PlannerRq;
 import org.tourGo.models.plan.entity.PlanDetails;
-import org.tourGo.models.plan.tourList.TourList;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,7 +32,6 @@ public class PlanDetailsRq {//여행 세부일정을 담당하는 dto
 	    private String address; //관광지 주소
 	    private Integer day; // day1,day2...등 일자 표시용
 	    private String firstimage;//관광지 이미지
-	    private String sigungu;//시,군,구
 		private Double mapx;
 		private Double mapy;
 		private String tel;

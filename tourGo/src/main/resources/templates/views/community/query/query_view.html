@@ -7,17 +7,19 @@
 		<!-- 커뮤니티 공통 상단 네비바 -->
 		<th:block th:replace="outlines/community_top::community_top"></th:block>
 		
-		<div class="marginTop150"></div>
+		<div class="marginTop60"></div>
 		
 		<!-- 문의 내용 -->
 		<div class="wrap centerW" th:object="${queryRequest}">
 			<table class="communityT marginAuto">
 				<tr>
-					<td colspan="2" align="left" class="width100 font2" th:text="*{queryTitle}"></td>
+					<td style="padding-bottom: 0" colspan="2" align="left" 
+						class="width100 font2 borderND" th:text="*{queryTitle}"></td>
 				</tr>
 				<tr>
-					<td class="borderND" align="left" th:text="'작성자 : '+*{user.userNm}"></td>
-					<td class="borderND" align="right" th:text="*{#temporals.format(regDt, 'yyyy-MM-dd HH:mm')}"></td>
+					<td class="font0" align="right" th:text="#{common.userName}
+						+' : '+*{user.userNm}+' '+#{community.regDt}+' : '
+						+*{#temporals.format(regDt, 'yyyy-MM-dd HH:mm')}"></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="left" class="enter" th:utext="*{queryContent}"></td>
@@ -39,8 +41,11 @@
 			<div class="marginTop30"></div>	
 			
 			<div>
-				<button class="btn0 width20" type="button" th:text="#{community.list}"
-					th:onclick="|location.href='/community/query_main?page=${page}'|">목록</button>
+				<button class="btn0 width20" type="button">
+					<i class="fa-solid fa-list"></i>
+					<span th:text="#{community.list}"
+					th:onclick="|location.href='/community/query_main?page=${page}'|"></span>
+				</button>
 				<th:block th:if="${user}==*{user.userId}">
 					<button class="width20" type="button" th:text="#{community.modify}"
 						th:onclick="|location.href='/community/query_update/*{queryNo}'|">수정</button>

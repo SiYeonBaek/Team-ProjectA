@@ -27,9 +27,18 @@
 
 <body>
 
-	<div class="form-group" style="margin-top: 30px;">
+
 
 		<div class="b_input">
+		
+		<div class="top_left">
+		<a th:href="@{/plan/go_plannerview_private/}+${planner.plannerNo}">
+		<button type="submit" class="btn_click">
+						상세 일정 보기 
+					</button>
+					</a>
+		</div>
+		
 			<div class="update">
 
 
@@ -54,7 +63,7 @@
 
 
 
-
+	<div>
 
 		<div class="flex form-group">
 			<div class="width-30">
@@ -109,16 +118,16 @@
 				<span th:if="${planner.open}!=true">비공개 </span>
 			</div>
 			</div>
+		</div>
 		
-		
-	</div>
+
 	
 
 	
-<a th:href="@{/plan/go_plannerview_private/}+${planner.plannerNo}">상세 일정 보기 </a>
+
 
 <!--	<a th:href="@{plan/makeDmakeDetails/}+${planner.plannerNo}">테스트입니다</a>-->
-	<div class="plannerview">
+	<div class="popupplannerview" >
 	
 <th:block  th:each="li,status : ${list}" th:object="${li}">
 <div class="plannercontent">

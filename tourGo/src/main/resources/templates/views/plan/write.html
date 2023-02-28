@@ -25,7 +25,7 @@
 
 <body>
 
-	<div class="form-group" style="margin-top: 30px;">
+
 
 		<div class="b_input">
 			<div class="delete">
@@ -49,23 +49,23 @@
 
 
 
-
+<div class="flex-col">
 		<div class="flex form-group">
-			<div class="width-30">
+			<div class="width-30_w">
 				<span>여행제목</span>
 			</div>
-			<div class="width-70">
-				<input type="text" th:field="${planner.title}" maxlength='12'>
+			<div class="width-70_w">
+				<input type="text" th:field="${planner.title}" maxlength='12' class="titleinput">
 			</div>
 		</div>
 
 		<div class="flex form-group">
-			<div class="width-30">
+			<div class="width-30_w">
 				여행기간
 			</div>
-			<div class="width-70">
-				<label><input type="date" th:value="${planner.sdate}" name="sdate"></label>
-				<select name="day" th:field="${planner.day}">
+			<div class="width-70_w">
+				<input type="date" th:value="${planner.sdate}" name="sdate" class="titleinput">
+				<select name="day" th:field="${planner.day}" class="titleinput">
 
 					<option value="1">1일</option>
 					<option value="2">2일</option>
@@ -82,13 +82,13 @@
 		</div>
 
 		<div class="flex form-group">
-			<div class="width-30">
-				여행타입
+			<div class="width-30_w">
+				<label>여행타입</label>
 			</div>
-			<div class="width-70" style="display:flex;align-items: center;font-size:14px;margin-top: 3px;">
+			<div class="width-70_w">
 
-
-				<div th:each="type : ${planTypes}">
+			<div class="radiobox">
+				<div th:each="type : ${planTypes}" class="daydiv2">
 					<input type="radio" th:field="${planner.planType}" th:value="${type.name()}"
 						class="form-check-input">
 					<label th:for="${#ids.prev('planType')}" th:text="${type.name}" class="form-check-label">
@@ -96,15 +96,16 @@
 					</label>
 
 				</div>
+				</div>
 			</div>
 		</div>
 
 		<div class="flex form-group">
-			<div class="width-30">
-				여행인원
+			<div class="width-30_w">
+				<label>여행인원</label>
 			</div>
-			<div class="width-70">
-				<select th:field="${planner.planSize}">
+			<div class="width-70_w">
+				<select th:field="${planner.planSize}" class="titleinput">
 
 					<option value="1">1명</option>
 					<option value="2">2명</option>
@@ -121,33 +122,49 @@
 		</div>
 
 		<div class="flex form-group">
-			<div class="width-30">
-				메모
+			<div class="width-30_w">
+			<label>메모</label>
 			</div>
-			<div class="width-70">
-				<textarea class="autosize" maxlength="250" placeholder="추가 바람"
-					style="resize: none;vertical-align: middle; width: 100%; " th:field="${planner.memo}"></textarea>
+			<div class="width-70_w">
+				<textarea class="titleinput" maxlength="250" placeholder="내용을 입력해주세요."
+					th:field="${planner.memo}"></textarea>
 
 			</div>
 			</div>
 			<div class="flex form-group">
-			
-			
-						<label class="title width-30">공개여부</label>	
-						<div style="margin-top:3px;">
-			<div th:if="${planner.open}">		
-			<input type="radio" name="open" value="true" checked="checked">공개
-			<input type="radio" name="open" value="false">비공개
+			<div class=width-30_w>
+			<label>공개여부</label>	
 			</div>
 			
-			<div th:unless="${planner.open}">
-				<input type="radio" name="open" value="true">공개
-			<input type="radio" name="open" value="false"  checked="checked">비공개
+						
+						<div class="width-70_w">
+			<div th:if="${planner.open}" class="radiobox">		
+			<div class= "daydiv">
+			<input type="radio" name="open" id="1"  value="true" checked="checked">
+			<label for="1" >공개</label>
 			</div>
-			</div>
+			<div class= "daydiv">
+			<input type="radio" name="open" id="2" value="false">
+				<label  for="2" >비공개</label>
 			</div>
 		
-	</div>
+</div>
+			</div>
+			
+			<div th:unless="${planner.open}" class="radiobox">
+			<div class= "daydiv">
+				<input type="radio" name="open" id="1" value="true">
+				<label for="1" >공개</label>
+				</div>
+				<div class= "daydiv">
+			<input type="radio" name="open" id="2" value="false"  checked="checked">
+			<label  for="2" >비공개</label>
+			</div>
+			</div>
+			</div>
+			</div>
+		</div>
+
 		<a th:href="@{/plan/makeDetails_move/}+${planner.plannerNo}">누르면 makeDmakeDetails 넘어갑니다 </a>
 <!-- <a th:href="@{/planneview_private/}+${planner.plannerNo}">누르면 makeDmakeDetails 넘어갑니다 </a> -->
 

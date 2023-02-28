@@ -4,14 +4,7 @@
 	
 <main layout:fragment="content">
 	<div class="destination">
-		<form th:action="@{/travel_destination_main}" method="get">
-			<div class="destination_search">
-				<div class="search_input">
-					<input type="text" class="input_txt" name="searchKeyword" placeholder="여행지 검색">
-					<button type="submit" class="input_btn">검색</button>
-				</div>
-			</div>
-		</form>
+		
 		<fieldset>
 			<div class="destination_area">
 				<div class="destination_radio">
@@ -51,6 +44,15 @@
 				</div>
 			</div>
 		</fieldset>
+		
+		<form th:action="@{/travel_destination_main}" method="get" class="searchbar">
+			<div class="destination_search">
+				<div class="search_input">
+					<input type="text" class="input_txt" name="searchKeyword" placeholder="여행지 검색">
+					<button type="submit" class="input_btn">검색</button>
+				</div>
+			</div>
+		</form>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -59,7 +61,7 @@
 				<div class="data_style">
 					<div class="each" th:each="data : ${page}">
 						<a class="subBox" id="subBox" th:href="@{|/destination_detail/${data.destinationNo}|}">
-							<img th:src="${data.tourImg}">
+							<img th:src="${data.tourImg}" onerror="this.onerror=null; this.src='../../../../images/noimg.jpg';">
 							<span>
 								<p th:text="${data.destinationNo}"></p>
 								<p th:text="${data.tourTitle}"></p>

@@ -6,10 +6,11 @@
 
 	<!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"> -->
 	<link th:href="@{/css/plan/weather.css}" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-<script src="https://kit.fontawesome.com/fda51a19be.js"
-	crossorigin="anonymous"></script>
-	﻿	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+	<script src="https://kit.fontawesome.com/fda51a19be.js" crossorigin="anonymous"></script>
+	﻿
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" th:src="@{/js/plan/makePlan/weather.js}"></script>
 
 	<script>
@@ -43,33 +44,28 @@
 
 
 
-			const button2El = document.getElementById("button2");
-			button2El.addEventListener("click", function () {
-				codefty.popup.open("/plan/makeplan2", "새 일정 만들기", 600, 500, true);
-			});
+
 		});
 	</script>
 
 	<div class="weatherview">
 
-	
-		
-		
-		
+
+
+
+
 	</div>
 
 	<div class="view">
 		<th:block th:each="li,status : ${list}" th:object="${li}">
-
-		
-			<div th:class="buttons"
-				th:data-no="*{plannerNo}">
+			<div th:class="buttons" th:data-no="*{plannerNo}">
 				<div class="overflow">
-				<img class="img-event" th:src="*{image}" onerror="this.onerror=null; this.src='../../../../images/noimg.jpg';">
+					<img class="img-event" th:src="*{image}"
+						onerror="this.onerror=null; this.src='../../../../images/noimg.jpg';">
 				</div>
 				<div class="textcenter">
 					<span th:text="*{title}" style="font-size:1.5rem"> </span>
-					</div>
+				</div>
 				<input type="hidden" th:name="test" th:value="*{plannerNo}" />
 			</div>
 
@@ -78,22 +74,21 @@
 
 	<div class="textcenter">
 		<th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
-		<a th:if="${page != nowPage and page>0}" th:href="@{/plan/(page = ${page - 1})}" th:text="${page}"></a>
-		<strong class="bold" th:if="${page == nowPage}" th:text="${page}"></strong>
-	
-	</th:block>
+			<a th:if="${page != nowPage and page>0}" th:href="@{/plan/(page = ${page - 1})}" th:text="${page}"></a>
+			<strong class="bold" th:if="${page == nowPage}" th:text="${page}"></strong>
+
+		</th:block>
 	</div>
 
 
 	<form th:action="@{/plan/}" method="get" class="textcenter formview">
-	<div class="searchbarview">
-	<input type="text" name="searchKeyword" class="searchbar" placeholder="검색어 입력">
-	<button type="submit" class="seachbutton">검색</button>
-</div>
+		<div class="searchbarview">
+			<input type="text" name="searchKeyword" class="searchbar" placeholder="검색어 입력">
+			<button type="submit" class="seachbutton">검색</button>
+		</div>
 	</form>
 
 
-	<button type="button" id="button2">새 일정 만들기</button>
 
 
 </main>

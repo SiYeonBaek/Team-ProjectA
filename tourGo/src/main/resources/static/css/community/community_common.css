@@ -2,9 +2,15 @@
 	margin: 0; padding: 0;
 }
 
+/*폰트크기 0.8배*/
+.font0{
+	font-size: 0.8rem;
+}
+
 /* 폰트크기 1.5배 */
 .font2{
 	font-size: 1.5rem;
+	font-weight: bold;
 }
 
 /* 폰트크기 3배 */
@@ -157,7 +163,7 @@ main.content{
 /* 와이드 이미지 들어가는 곳 */
 .wide{
 	width: 2000px; 
-	height: 24rem;
+	height: 32rem;
 	overflow: hidden;
 	margin-left : -400px !important;
 }
@@ -167,7 +173,6 @@ main.content{
 }
 
 .top_nav{
-	background-color: #09c;
 	height: 50px;
 	line-height: 50px;
 }
@@ -193,10 +198,11 @@ main.content{
 
 /* 상단바 쪽 와이드이미지 */
 .wide .wideImg{
+	margin-top: 100px;
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	object-position: center 75%;
+	object-position: center 85%;
 }
 
 /*게시판명*/
@@ -223,8 +229,10 @@ main.content{
 	border-bottom : 1px solid rgba(0,153,204,0.3);
 }
 
-.communityT th{
-	background-color: rgba(124,213,220,0.65);
+/* 테이블 내 제목칸 */
+.communityT tr:first-child td{
+	padding-bottom: 0;
+	padding-left: 0;
 }
 
 /* 테이블 내 textarea */

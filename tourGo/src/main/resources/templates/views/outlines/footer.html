@@ -10,6 +10,8 @@
 						국내 여행 정보를 확인 할 수 있으며,
 						<br>
 						여행일정을 짜서 공유를 할 수 있는 WebSite입니다.
+						<br>
+						메인 영상 출처 : http://localhost:3000/main_view
 					</p>
 				</div>
 			</div>
@@ -33,9 +35,9 @@
 				<div class="content_style3">
 					<ul class="footer_ul">
 						<li><a th:href="@{/travel_destination_main}" class="a_link">국내여행지</a></li>
-						<li><a th:href="@{date}" class="a_link">여행만들기</a></li>
+						<li><a th:href="@{/plan?page=0}" class="a_link">여행만들기</a></li>
 						<li><a th:href="@{/community/notice_main}" class="a_link">공지사항</a></li>
-						<li><a th:href="@{/community/review_main}" class="a_link">문의사항</a></li>
+						<li><a th:href="@{/community/query_main}" class="a_link">문의사항</a></li>
 						<li><a th:href="@{/community/review_main}" class="a_link">이용후기</a></li>
 					</ul>
 				</div>

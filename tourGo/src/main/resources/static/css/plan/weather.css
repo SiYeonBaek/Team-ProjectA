@@ -1,42 +1,46 @@
-
-
 /*----------날씨카드슬라이드---------- */
-*{
-  margin : 0;
-  padding : 0;
-}
-.marginLeft-5{
-    margin-left: 5%;
-}
-.align-Colum1 {
-    display: flex;
-/*    flex-direction: column;*/
-}
-.align-Colum {
-    width:200px;
-}
-.paddingTop-10 {
-/*    padding-top: 10%;*/
-}
-.align-Center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+* {
+	margin: 0;
+	padding: 0;
 }
 
-.Weather{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.marginLeft-5 {
+	margin-left: 5%;
 }
+
+.align-Colum1 {
+	display: flex;
+	/*    flex-direction: column;*/
+}
+
+.align-Colum {
+	width: 200px;
+}
+
+.paddingTop-10 {
+	/*    padding-top: 10%;*/
+}
+
+.align-Center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.Weather {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .Weather-slideshow-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 .Weather-Slides {
-/*    border-radius: 5%;
+	/*    border-radius: 5%;
     display: flex;
     justify-content: center;
     width: 200px;
@@ -46,140 +50,154 @@
 
 .Weather-prev,
 .Weather-next {
-    display: flex;
-    align-content: center;
-    cursor: pointer;
-    width: auto;
-    margin-top: 150%;
-    padding: 20px;
-    color: #5B86EF;
-    font-weight: bold;
-    font-size: 30px;
-    transition: .6s ease;
-    border-radius: 0 3px 3px 0
+	display: flex;
+	align-content: center;
+	cursor: pointer;
+	width: auto;
+	margin-top: 150%;
+	padding: 20px;
+	color: #5B86EF;
+	font-weight: bold;
+	font-size: 30px;
+	transition: .6s ease;
+	border-radius: 0 3px 3px 0
 }
 
 .Weather-next {
-    border-radius: 3px 3px 3px 3px
+	border-radius: 3px 3px 3px 3px
 }
 
 .Weather-prev {
-    border-radius: 3px 3px 3px 3px
+	border-radius: 3px 3px 3px 3px
 }
 
 .Weather-prev:hover,
 .Weather-next:hover {
-    color: black;
+	color: black;
 }
 
 
 
 .Weather-dot:hover {
-    background-color: black;
+	background-color: black;
 }
 
-.BorderRound{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 180px;
-    background: #5B86EF;
-    color: white;
-    border-radius: 10px;
-    padding: 5px;
-    margin: 5%;
+.BorderRound {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 180px;
+	background: #5B86EF;
+	color: white;
+	border-radius: 10px;
+	padding: 5px;
+	margin: 5%;
 }
-.textcenter{
+
+.textcenter {
 	text-align: center;
 }
-.weatherview{
 
-	text-align:right;
+.weatherview {
+
+	text-align: right;
 }
+
 .view {
 
-	display: grid; 
-	grid-template-columns: repeat(3,400px); 
+	display: grid;
+	grid-template-columns: repeat(3, 400px);
 	place-content: center;
 	justify-items: center;
-	margin-bottom:40px;
+	margin-bottom: 40px;
 }
-.buttons{
-	border:1px solid green; 
-	margin-top:70px;
-	width:300px;
-	box-shadow: 15px 15px 35px rgba(0,0,0,0.1);
+
+.buttons {
+	border: 1px solid green;
+	margin-top: 70px;
+	width: 300px;
+	box-shadow: 15px 15px 35px rgba(0, 0, 0, 0.1);
 	cursor: pointer;
 }
+
 .formview {
-	margin-top:70px;
-		display: flex;
-    justify-content: center;
+	margin-top: 70px;
+	display: flex;
+	justify-content: center;
 
-    
-	
+
+
 }
-.bold{
-	color:red;
+
+.bold {
+	color: red;
 }
-#button2{
-	padding : 5px;
-	margin-right:10px;
-	margin-bottom:10px;
-	font-size:15px;
+
+#button2 {
+	float: right;
+	padding: 10px;
+	font-size: 15px;
 	border: 1px solid #7cd5dc;
-	border-radius: 12px;
-	color:#ffffff;
+	margin-right: 100px;
+	margin-bottom: 10px;
+	border-radius: 7px;
+	color: #ffffff;
 	cursor: pointer;
+	border: none;
 }
-.searchbar{
-font-size: 14spx;
-width: 325px;
-padding: 10px;
-border: 0px;
-outline: none;
-float: left;
 
-	
+.searchbar {
+	font-size: 14spx;
+	width: 325px;
+	padding: 10px;
+	border: 0px;
+	outline: none;
+	float: left;
+
+
 }
-.seachbutton{
+
+.seachbutton {
 
 	width: 50px;
-height: 100%;
-border: 0px;
-outline: none;
-float: right;
-color: #ffffff;
-cursor: pointer;
+	height: 100%;
+	border: 0px;
+	outline: none;
+	float: right;
+	color: #ffffff;
+	cursor: pointer;
 	border-radius: 0px;
 }
-.view a{
-color:black;
+
+.view a {
+	color: black;
 
 }
 
-.img-event{
+.img-event {
 	width: inherit;
 	height: 300px;
-	object-fit:cover;
+	object-fit: cover;
 }
 
-.buttons:hover{
-/*   	 -webkit-transform: scale(1.07);
+.buttons:hover {
+	/*   	 -webkit-transform: scale(1.07);
   transform: scale(1.07); */
 }
-.searchbarview{
+
+.searchbarview {
 	height: 40px;
-width: 400px;
-border: 1px solid #7cd5dc;
-background: #ffffff;
+	width: 400px;
+	border: 1px solid #7cd5dc;
+	background: #ffffff;
 }
-.plannerview{
+
+.plannerview {
 	background-color: #1b5ac2;
 }
-.overflow{
-	overflow:hidden;
-	width:100%;
-	height:300px;
+
+.overflow {
+	overflow: hidden;
+	width: 100%;
+	height: 300px;
 }
-  

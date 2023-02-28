@@ -60,7 +60,7 @@ import org.tourGo.common.HttpRequest;
 import org.tourGo.common.JsonResult;
 import org.tourGo.models.destination.entity.DestinationDetail;
 import org.tourGo.models.entity.user.User;
-import org.tourGo.models.plan.tourList.TourList;
+
 import org.tourGo.models.plan.tourList.TourListDto;
 import org.tourGo.service.destination.DestinationDetailService;
 
@@ -85,8 +85,7 @@ public class TourService {
 	  &arrange=C
 	  &keyword=
 	 * */
-	//ORm3mQovRB97uz6GfTJJNBR%2F2egRn2vglLUfbXCP%2B2pblHvBggwbP1wMwnl%2FRvFZfHqob4GRBHbQDNn6IZP%2FFg%3D%3D
-	//ORm3mQovRB97uz6GfTJJNBR/2egRn2vglLUfbXCP+2pblHvBggwbP1wMwnl/RvFZfHqob4GRBHbQDNn6IZP/Fg==
+
 	 private final String BASE_URL = "https://apis.data.go.kr/B551011/KorService/searchKeyword";
 	 private final String serviceKey = "ORm3mQovRB97uz6GfTJJNBR%2F2egRn2vglLUfbXCP%2B2pblHvBggwbP1wMwnl%2FRvFZfHqob4GRBHbQDNn6IZP%2FFg%3D%3D";
 	 private final String numOfRows = "&numOfRows=10";

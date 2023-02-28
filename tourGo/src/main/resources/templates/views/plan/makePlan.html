@@ -13,9 +13,11 @@
 	<form method="post" th:action="@{/plan/makeDetails}"
 		th:object="${plannerRq}">
 		<div class="form-group">
-			<label class=title>여행제목</label>
-			<div class="input_title_box">
-				<input class="width-90" type="text" th:field="*{title}" maxlength='12'>
+		<div class="width-30_w">
+			<label>여행제목</label>
+			</div>
+			<div class="width-70_w">
+				<input type="text" th:field="*{title}" maxlength='12' class="titleinput">
 				<div class='error' th:each="err : ${#fields.errors('title')}"
 					th:text="${err}"></div>
 			</div>
@@ -25,13 +27,13 @@
 
 
 		<div class="form-group">
-
+			<div class="width-30_w">
 			<label class=title> 여행기간 </label>
-
-			<div class="input_box">
+			</div>
+			<div class="width-70_w">
 				<input type="date" name="sdate" th:field="*{sdate}"
-					style="font-size: 17px;"> <select name="day"
-					th:field="*{day}" style="font-size: 17px;">
+					class="titleinput"> <select name="day"
+					th:field="*{day}" class="titleinput">
 
 					<option value="1">1일</option>
 					<option value="2">2일</option>
@@ -52,29 +54,35 @@
 		</div>
 
 		<div class="form-group">
-			<label class=title>여행타입</label>
-			<div class="trip">
-				<div th:each="type : ${planTypes}">
-					<input type="radio" th:field="*{planType}"
-						th:value="${type.name()}" class="form-check-input"> <label
-						th:for="${#ids.prev('planType')}" th:text="${type.name}"
-						class="form-check-label"> </label>
-				</div>
-				<div class='error' th:each="err : ${#fields.errors('planType')}"
-					th:text="${err}"></div>
+		<div class="width-30_w">
+			<label>여행타입</label>
 			</div>
+			<div class="width-70_w">
+			
+			<div class="radiobox">
+				<div th:each="type : ${planTypes}" class="daydiv2">
+					<input type="radio" th:field="*{planType}"
+						th:value="${type.name()}" class="form-check-input"> 
+						<label th:for="${#ids.prev('planType')}" th:text="${type.name}" class="form-check-label"> </label>
+				</div>
+				
+			</div>
+			<div class='error' th:each="err : ${#fields.errors('planType')}"
+					th:text="${err}"></div>
+		</div>
 		</div>
 
 
 
 
 		<div class="form-group">
-
-			<label class=title>여행인원</label>
+				<div class="width-30_w">
+				<label>여행인원</label>
+				</div>
+			
 
 			<div>
-				<select name="planSize" th:field="*{planSize}"
-					style="font-size: 17px;">
+				<select name="planSize" th:field="*{planSize}" class="titleinput">
 
 					<option value="1">1명</option>
 					<option value="2">2명</option>
@@ -92,22 +100,34 @@
 
 		</div>
 		<div class="form-group">
-
-			<label class=title>공개여부</label> <input type="radio" name="open"
-				value="true" checked="checked">공개 <input type="radio"
-				name="open" value="false">비공개
-
+			<div class=width-30_w>
+			<label class=title>공개여부</label> 
+			</div>
+			<div class="width-70_w">
+			<div  class="radiobox">	
+			
+			<div class= "daydiv">
+			<input type="radio" name="open" value="true" checked="checked">
+			<label for="1" >공개</label>
+			</div>
+			
+			<div class= "daydiv">
+				<input type="radio"	name="open" value="false">
+				<label  for="2" >비공개</label>
+				</div>
+				
 		</div>
+		</div>
+		</div>
+		
 
 		<div class="form-group">
-
-
-			<label class=title>메모</label>
-
-
-			<div class="input">
-				<textarea class="memobar" name="memo" th:field="*{memo}"
-					maxlength="250" placeholder="추가 바람">
+		<div class="width-30_w">
+			<label>메모</label>
+			</div>
+		<div class="width-70_w">
+				<textarea class="titleinput" name="memo" th:field="*{memo}"
+					maxlength="250" placeholder="내용을 입력해주세요.">
 					</textarea>
 			</div>
 		</div>

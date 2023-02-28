@@ -101,7 +101,7 @@ public class PlannerController {
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
-		// model.addAttribute("list2",plannerService.plannerList(pageable));
+		
 		model.addAttribute("addScript", "layer");
 		return "plan/plannerView";
 	}
@@ -114,9 +114,9 @@ public class PlannerController {
 		Page<Planner> list = null;
 
 		if (searchKeyword == null) {
-			list = plannerService.plannerList2(pageable);
+			list = plannerService.plannerList(pageable);
 		} else {
-			list = plannerService.plannerSearchList2(searchKeyword, pageable);
+			list = plannerService.plannerSearchList(searchKeyword, pageable);
 		}
 		
 		
@@ -155,7 +155,7 @@ public class PlannerController {
 			PlannerRq plannerRq = plannerService.toDto(planner);
 			ArrayList<String> dayList = new ArrayList<>();
 			for (int i = 1; i <= plannerRq.getDay(); i++) {
-				String d = "DAYl" + i;
+				String d = "DAY" + i;
 				dayList.add(d);
 			}
 			model.addAttribute("dayList", dayList);
@@ -178,7 +178,7 @@ public class PlannerController {
 	@PostMapping("/{plannerNo}")
 	public String makeDetailsPs(@PathVariable Long plannerNo,DetailsItems items, Model model) {
 	
-		Planner planner = plannerService.find(plannerNo);
+		Planner planner = plannerService.getPlanner(plannerNo);
 	
 		plannerService.updateImage(planner);
 		if(items.getDetailsNo()!=null) {
@@ -200,7 +200,7 @@ public class PlannerController {
 	public String makePlanPs(@Valid PlannerRq plannerRq, Errors errors, Model model,
 			@AuthenticationPrincipal PrincipalDetail principal) {
 
-		// planValidator.validate(plannerRq, errors);
+		
 
 		if (errors.hasErrors()) {
 			model.addAttribute("plannerRq", plannerRq);

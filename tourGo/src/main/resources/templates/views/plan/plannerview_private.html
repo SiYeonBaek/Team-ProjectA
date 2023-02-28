@@ -5,14 +5,14 @@
 <main layout:fragment="content" style="margin-top:150px;">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-<link th:href="@{/css/plan/readwrite.css}" rel="stylesheet"
+<link th:href="@{/css/plan/readview.css}" rel="stylesheet"
 	type="text/css">
 
  <input type="hidden" id="plannerNo" th:value="${planner.plannerNo}">
 
 
 <div class="allviewpage">
-	<div>
+	<div class="titleview">
 		<div class="flex form-group">
 			<div class="width-30">
 				<span>여행제목</span>
@@ -85,7 +85,7 @@
 			</div>
 			<div class="width-70">
 				<span>좋아요</span> <span th:text="${planner.totalLikes}"
-					id="totalLikes"></span> <br> <br> <br>
+					id="totalLikes"></span>
 			</div>
 		</div>
 

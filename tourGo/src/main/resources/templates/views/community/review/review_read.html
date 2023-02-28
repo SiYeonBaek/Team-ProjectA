@@ -9,25 +9,24 @@
 		<!-- 커뮤니티 공통 상단 네비바 -->
 		<th:block th:replace="outlines/community_top::community_top"></th:block>
 		
-		<div class="marginTop150"></div>
+		<div class="marginTop60"></div>
 		
 		<!-- 후기 내용 -->
 		<div class="wrap centerW">
 			<input type="hidden" id="reviewNo" th:value="*{reviewNo}">
 			<table class="communityT marginAuto" th:object="${reviewRequest}">
 				<tr>
-					<td class="width100 font2" colspan="4" align="left" th:text="*{reviewTitle}"></td>
+					<td class="width100 font2 borderND" 
+						colspan="4" align="left" th:text="*{reviewTitle}"></td>
 				</tr>
 				<tr align="left">
-					<th th:text="#{common.region}"></th>
-					<td th:text="*{region}"></td>
-					<th th:text="#{review.period}"></th>
-					<td th:text="*{period}"></td>
-				</tr>
-				<tr>
-					<td colspan="4" align="right">
-						<a th:href="@{/user/mypage/{id}(id=*{id})}"><span th:text="*{name}"></span></a>&nbsp;&nbsp;
-						<span th:text="*{#temporals.format(regDt, 'yyyy-MM-dd HH:mm')}"></span>
+					<td class="font0" th:text="#{common.region} + ' : '+ *{region}+
+						' / '+#{review.period}+' : '+*{period}"></td>
+					<td class="font0" align="right">
+						<a th:href="@{/user/mypage/{id}(id=*{id})}">
+						<span th:text="#{common.userName}+' : '+*{name}"></span></a>&nbsp;
+						<span th:text="#{community.regDt}+' : '
+							+*{#temporals.format(regDt, 'yyyy-MM-dd HH:mm')}"></span>
 					</td>
 				</tr>
 				<tr>
@@ -57,8 +56,10 @@
 			<th:block th:replace="community/reply::reply"></th:block>
 
 			<div>
-				<button class="btn0 width20" type="button" th:text="#{community.list}"							
-							th:onclick="'location.href=\''+@{${url}}+'\''">목록</button>
+				<button class="btn0 width20" type="button">
+					<i class="fa-solid fa-list"></i>
+					<span th:text="#{community.list}" th:onclick="'location.href=\''+@{${url}}+'\''"></span>
+				</button>
 				<th:block sec:authorize="isAuthenticated()">
 				<a class="btn2 width20" type="button" th:text="#{report}"
 					th:href="@{/report/review/{reviewNo}(reviewNo=${reviewRequest.reviewNo})}">신고</a>

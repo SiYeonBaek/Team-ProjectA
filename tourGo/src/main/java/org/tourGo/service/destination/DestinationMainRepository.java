@@ -12,5 +12,7 @@ import org.tourGo.models.plan.entity.Planner;
 
 public interface DestinationMainRepository extends JpaRepository<DestinationDetail, Long>, QuerydslPredicateExecutor {
 
+	// 조회수 top3
+	List<DestinationDetail> findTop3By(Sort sort);
 	
 }

@@ -57,6 +57,12 @@ public class DestinationMainService {
 		return search;
 	}
 	
+	// 조회수 탑3 추출
+	public List<DestinationDetail> topHitsDestination() {
+		Sort sort = Sort.by(Sort.Order.desc("tourHits"),Sort.Order.asc("destinationNo"));
+		List<DestinationDetail> top = destinationMainRepository.findTop3By(sort);
+		return top;
+	}
 
 
 

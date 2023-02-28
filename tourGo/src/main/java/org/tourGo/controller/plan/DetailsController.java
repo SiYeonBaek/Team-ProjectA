@@ -30,6 +30,10 @@ public class DetailsController {
 	@Autowired
 	PlannerService plannerService;
 	
+	/**
+	 사용자가 day를 바꾸었을때 기존에 day랑 매핑된 details를 업데이트하고 
+	 사용자가 클릭한 day날짜에 맞는 details를 list형태로 반환
+	  */
 	@PostMapping("select")
 	public String selectDay(Model model,DetailsItems rqList){
 	Integer day = rqList.getDay();
@@ -50,9 +54,9 @@ public class DetailsController {
 	
 	}
 	
-	
+	//사용자가 관광지를 선택을 눌렀을때 db에 저장하는 컨트롤러
 	@PostMapping("saveDetails")
-	public String testxml(PlanDetailsRq rq,Model model){
+	public String saveDetails(PlanDetailsRq rq,Model model){
 	
 		Planner planner = plannerService.getPlanner(rq.getPlannerNo());
 		Integer day = rq.getDay();
@@ -65,7 +69,7 @@ public class DetailsController {
 		
 		return "plan/makeDetails::#selected_items";
 	}
-	
+	//사용자가 삭제를 누른 관광지 삭제하는 컨트롤러
 	@GetMapping("delteDetails")
 	public String delete(Long detailsNo,Model model) {
 		System.out.println(detailsNo);

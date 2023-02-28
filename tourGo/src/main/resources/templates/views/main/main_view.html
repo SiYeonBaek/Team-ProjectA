@@ -1,172 +1,278 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{main/main_layout}">
+
+<head>
+	<script type="text/javascript" th:src="@{/js/layer.js}"></script>
+	<link th:href="@{/css/plan/weather.css}" rel="stylesheet" type="text/css">
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/plan/makePlan/weather.js}"></script>
+</head>
 <main layout:fragment="content">
-	<div class="main_content">
-		<div class="main_search">
-			<div>
-				<div class="banner">
-					<input type="text" class="input_txt" placeholder="국내여행지 검색">
-					<input type="button" class="input_btn" value="검색">
-				</div>
-				<video autoplay loop muted preload="auto" width="1850px" height="650px">
-		          <source th:src="@{/images/main_test/popo.mp4}">
-		        </video>
-			</div>
-		</div>
-	</div>
-	<div class="relative">
-		<div class="bg-gray-100 py-10">
-			<div class="main_menuAll">
-				<div class="menu_content1">
-					<!-- <div class="w-40 h-40 border border-black mb-3 rounded-full overflow-hidden"></div> -->
-					<div class="context_1">
-						<a th:href="@{/travel_destination_main}">
-							<img th:src="@{/images/main_test/sub1.jpg}" alt="">
-							<div class="text-center">
-								<h3 class="text-xl">국내여행지</h3>
-							</div>
-						</a>
+
+	<script>
+		window.addEventListener("DOMContentLoaded", function () {
+
+			const button1El = document.getElementById("btn1");
+			button1El.addEventListener("click", function () {
+				codefty.popup.open("/plan/makeplan2", "새 일정 만들기", 600, 500, true);
+			});
+
+		});
+
+		function btn() {
+			alert('로그인 후 이용가능합니다.');
+		}
+	</script>
+
+	<div class="main_view">
+		<div class="start_content">
+			<div class="left_video">
+				<video autoplay loop muted preload="auto">
+					<source th:src="@{/images/main_test/Travel Seoul in a Flash 1080p.mp4}">
+				</video>
+				<div class="all_text">
+					<div class="first_text">
+						국내 여행 스케줄 플래너
 					</div>
-				</div>
-				<div class="menu_content1">
-					<!-- <div class="w-40 h-40 border border-black mb-3 rounded-full overflow-hidden"></div> -->
-					<div class="context_1">
-						<a th:href="@{plan}">
-							<img th:src="@{/images/main_test/sub4.jpg}" alt="">
-							<div class="text-center">
-								<h3 class="text-xl">여행만들기</h3>
-							</div>
-						</a>
+					<div class="center_text">
+						TourGo
 					</div>
-				</div>
-				<div class="menu_content1">
-					<!-- <div class="w-40 h-40 border border-black mb-3 rounded-full overflow-hidden"></div> -->
-					<div class="context_1">
-						<a th:href="@{/community/review_main}">
-							<img th:src="@{/images/main_test/sub6.jpg}" alt="">
-							<div class="text-center">
-								<h3 class="text-xl">여행후기</h3>
-							</div>
-						</a>
+					<div class="last_text">
+						<div th:if="${user}!=null">
+							<button type="button" id="btn1">새 일정 만들기</button>
+						</div>
+						<div th:unless="${user}!=null">
+							<button type="button" onclick="btn()">새 일정 만들기</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<div class="Weather-slideshow-container">
+			<div class="align-Colum1 align-Center">
+				<div class="BorderRound Tmoney-fontsize-150">
+					<span class="nowtime"></span>
+					<span class="marginLeft-5">현재날씨</span>
+				</div>
+
+				<div class="Weather-Slides Weather-fade">
+					<div class="align-Center align-Colum paddingTop-10">
+						<span class="Tmoney-fontsize-150 color-blue">춘천</span>
+						<span class="ChuncheonIcon"></span>
+						<span class="ChuncheonNowtemp KOTRA-fontsize-100">현재기온:</span>
+					</div>
+				</div>
+
+				<div class="Weather-Slides Weather-fade">
+					<div class="align-Center align-Colum paddingTop-10">
+						<span class="Tmoney-fontsize-150 color-blue">강릉</span>
+						<span class="GangneungIcon"></span>
+						<span class="GangneungNowtemp KOTRA-fontsize-100">현재기온:</span>
+					</div>
+				</div>
+
+				<div class="Weather-Slides Weather-fade">
+					<div class="align-Center align-Colum paddingTop-10">
+						<span class="Tmoney-fontsize-150 color-blue">원주</span>
+						<span class="WonjuIcon"></span>
+						<span class="WonjuNowtemp KOTRA-fontsize-100">현재기온:</span>
+					</div>
+				</div>
+
+				<div class="Weather-Slides Weather-fade">
+					<div class="align-Center align-Colum paddingTop-10">
+						<span class="Tmoney-fontsize-150 color-blue">서울</span>
+						<span class="SeoulIcon"></span>
+						<span class="SeoulNowtemp KOTRA-fontsize-100">현재기온:</span>
+					</div>
+				</div>
+
+				<div class="Weather-Slides Weather-fade">
+					<div class="align-Center align-Colum paddingTop-10">
+						<span class="Tmoney-fontsize-150 color-blue">인천</span>
+						<span class="IncheonIcon"></span>
+						<span class="IncheonNowtemp KOTRA-fontsize-100">현재기온:</span>
+					</div>
+				</div>
+
+				<div class="Weather-Slides Weather-fade">
+					<div class="align-Center align-Colum paddingTop-10">
+						<span class="Tmoney-fontsize-150 color-blue">청주</span>
+						<span class="CheongjuIcon"></span>
+						<span class="CheongjuNowtemp KOTRA-fontsize-100">현재기온:</span>
+					</div>
+				</div>
+
+				<div class="Weather-Slides Weather-fade">
+					<div class="align-Center align-Colum paddingTop-10">
+						<span class="Tmoney-fontsize-150 color-blue">대전</span>
+						<span class="DaejeonIcon"></span>
+						<span class="DaejeonNowtemp KOTRA-fontsize-100">현재기온:</span>
+					</div>
+				</div>
+
+				<div class="Weather-Slides Weather-fade">
+					<div class="align-Center align-Colum paddingTop-10">
+						<span class="Tmoney-fontsize-150 color-blue">안동</span>
+						<span class="AndongIcon"></span>
+						<span class="AndongNowtemp KOTRA-fontsize-100">현재기온:</span>
+					</div>
+				</div>
+
+				<div class="Weather-Slides Weather-fade">
+					<div class="align-Center align-Colum paddingTop-10">
+						<span class="Tmoney-fontsize-150 color-blue">대구</span>
+						<span class="DaeguIcon"></span>
+						<span class="DaeguNowtemp KOTRA-fontsize-100">현재기온:</span>
+					</div>
+				</div>
+
+				<div class="Weather-Slides Weather-fade">
+					<div class="align-Center align-Colum paddingTop-10">
+						<span class="Tmoney-fontsize-150 color-blue">울산</span>
+						<span class="UlsanIcon"></span>
+						<span class="UlsanNowtemp KOTRA-fontsize-100">현재기온:</span>
+					</div>
+				</div>
+
+				<div class="Weather-Slides Weather-fade">
+					<div class="align-Center align-Colum paddingTop-10">
+						<span class="Tmoney-fontsize-150 color-blue">창원</span>
+						<span class="ChangwonIcon"></span>
+						<span class="ChangwonNowtemp KOTRA-fontsize-100">현재기온:</span>
+					</div>
+				</div>
+
+				<div class="Weather-Slides Weather-fade">
+					<div class="align-Center align-Colum paddingTop-10">
+						<span class="Tmoney-fontsize-150 color-blue">부산</span>
+						<span class="BusanIcon"></span>
+						<span class="BusanNowtemp KOTRA-fontsize-100">현재기온:</span>
+					</div>
+				</div>
+
+				<div class="Weather-Slides Weather-fade">
+					<div class="align-Center align-Colum paddingTop-10">
+						<span class="Tmoney-fontsize-150 color-blue">전주</span>
+						<span class="JeonjuIcon"></span>
+						<span class="JeonjuNowtemp KOTRA-fontsize-100">현재기온:</span>
+					</div>
+				</div>
+
+				<div class="Weather-Slides Weather-fade">
+					<div class="align-Center align-Colum paddingTop-10">
+						<span class="Tmoney-fontsize-150 color-blue">목포</span>
+						<span class="MokpoIcon"></span>
+						<span class="MokpoNowtemp KOTRA-fontsize-100">현재기온:</span>
+					</div>
+				</div>
+
+				<div class="Weather-Slides Weather-fade">
+					<div class="align-Center align-Colum paddingTop-10">
+						<span class="Tmoney-fontsize-150 color-blue">광주</span>
+						<span class="GwangjuIcon"></span>
+						<span class="GwangjuNowtemp KOTRA-fontsize-100">현재기온:</span>
+					</div>
+				</div>
+
+				<div class="Weather-Slides Weather-fade">
+					<div class="align-Center align-Colum paddingTop-10">
+						<span class="Tmoney-fontsize-150 color-blue">여수</span>
+						<span class="YeosuIcon"></span>
+						<span class="YeosuNowtemp KOTRA-fontsize-100">현재기온:</span>
+					</div>
+				</div>
+
+				<div class="Weather-Slides Weather-fade">
+					<div class="align-Center align-Colum paddingTop-10">
+						<span class="Tmoney-fontsize-150 color-blue">제주</span>
+						<span class="JejuIcon"></span>
+						<span class="JejuNowtemp KOTRA-fontsize-100">현재기온:</span>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<br>
+		<div class="textcenter">
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(1)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(2)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(3)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(4)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(5)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(6)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(7)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(8)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(9)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(10)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(11)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(12)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(13)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(14)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(15)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(16)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(17)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(18)'></span>
+		</div>
+		<br>
+		<div class="textcenter">
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(1)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(2)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(3)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(4)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(5)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(6)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(7)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(8)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(9)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(10)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(11)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(12)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(13)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(14)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(15)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(16)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(17)'></span>
+			<span class="Weather-dot" onclick='WeatherCurrentSlide(18)'></span>
+		</div>
 	</div>
-	<!-- 인기 여행지 view -->
-	<div class="popular_content">
-		<div class="">
-			<h1>인기여행지</h1>
-			<div class="pop_cont_lay">
-				<div class="pop_cont_mg">
-					<div>
-						<a th:href="@{date}">
-							<div class="pop_cont_txt">
-								<label>param value</label>
-							</div>
-							<img th:src="@{/images/main_test/sub4.jpg}">
-						</a>
-					</div>
+	<div class="link_page">
+		<div class="plan_content">
+			<h2>여행기</h2>
+			<div class="makeplan_top3">
+				<div th:if="${plannerTop3List != null}" class="plan_top3" th:each="planner : ${plannerTop3List}">
+					<a class="divBox" id="divBox" th:href="@{/plan/plannerallview_page/}+*{planner.plannerNo}">
+						<img th:src="${planner.image}"
+							onerror="this.onerror=null; this.src='../../../../images/noimg.jpg';">
+						<span>
+							<p th:text="${planner.title}"></p>
+							<p th:text="${planner.totalLikes}"></p>
+						</span>
+					</a>
 				</div>
-				<div class="pop_cont_mg">
-					<div class="pop_inner_mg">
-						<a th:href="@{date}">
-							<div class="pop_cont_txt">
-								<label>param value</label>
-							</div>
-							<img th:src="@{/images/main_test/sub4_1.jpg}">
-						</a>
-					</div>
-					<div class="pop_inner_mg">
-						<a th:href="@{date}">
-							<div class="pop_cont_txt">
-								<label>param value</label>
-							</div>
-							<img th:src="@{/images/main_test/sub4_1.jpg}">
-						</a>
-					</div>
-				</div>
-				<div class="pop_cont_mg">
-					<div class="pop_inner_mg">
-						<a th:href="@{date}">
-							<div class="pop_cont_txt">
-								<label>param value</label>
-							</div>
-							<img th:src="@{/images/main_test/sub4_1.jpg}">
-						</a>
-					</div>
-					<div class="pop_inner_mg">
-						<a th:href="@{date}">
-							<div class="pop_cont_txt">
-								<label>param value</label>
-							</div>
-							<img th:src="@{/images/main_test/sub4_1.jpg}">
-						</a>
-					</div>
+			</div>
+		</div>
+		<div class="destination_content">
+			<h2>국내여행지</h2>
+			<div class="destination_top3">
+				<div th:if="${destTop3List != null}" class="dest_top3" th:each="destination : ${destTop3List}">
+					<a class="top3_all" id="top3_all" th:href="@{|/destination_detail/${destination.destinationNo}|}">
+						<img th:src="${destination.tourImg}"
+							onerror="this.onerror=null; this.src='../../../../images/noimg.jpg';">
+						<span>
+							<p th:text="${destination.tourDestination}"></p>
+							<p th:text="${destination.tourTitle}"></p>
+						</span>
+					</a>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- 인기여행일정 -->
-	<div class="popular_date">
-		<div>
-			<h1>인기 여행 일정</h1>
-			<div class="pop_date">
-				<div class="pop_date_content1">
-					<!-- <div class="w-40 h-40 border border-black mb-3 rounded-full overflow-hidden"></div> -->
-					<div class="pop_img">
-						<a th:href="@{main_view}">
-							<img th:src="@{/images/main_test/sub1.jpg}" alt="">
-							<div class="pop_text">
-								<div class="p_t_left">
-									<p>제목</p>
-								</div>
-								<div class="p_t_right">
-									<p>조회수</p>
-									<p>추천수</p>
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="pop_date_content1">
-					<!-- <div class="w-40 h-40 border border-black mb-3 rounded-full overflow-hidden"></div> -->
-					<div class="pop_img">
-						<a th:href="@{main_view}">
-							<img th:src="@{/images/main_test/sub1.jpg}" alt="">
-							<div class="pop_text">
-								<div class="p_t_left">
-									<p>제목</p>
-								</div>
-								<div class="p_t_right">
-									<p>조회수</p>
-									<p>추천수</p>
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="pop_date_content1">
-					<!-- <div class="w-40 h-40 border border-black mb-3 rounded-full overflow-hidden"></div> -->
-					<div class="pop_img">
-						<a th:href="@{main_view}">
-							<img th:src="@{/images/main_test/sub1.jpg}" alt="">
-							<div class="pop_text">
-								<div class="p_t_left">
-									<p>제목</p>
-								</div>
-								<div class="p_t_right">
-									<p>조회수</p>
-									<p>추천수</p>
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
+
 </main>
 
 </html>

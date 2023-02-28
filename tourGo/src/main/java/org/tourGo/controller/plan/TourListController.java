@@ -14,7 +14,7 @@ import org.tourGo.common.AlertException;
 import org.tourGo.common.JsonResult;
 import org.tourGo.models.entity.user.User;
 import org.tourGo.models.plan.entity.Planner;
-import org.tourGo.models.plan.tourList.TourList;
+
 import org.tourGo.models.plan.tourList.TourListDto;
 import org.tourGo.service.plan.PlannerService;
 import org.tourGo.service.plan.TourService;
@@ -28,7 +28,7 @@ public class TourListController {
 	@Autowired PlannerService plannerService;
 
 	
- /* @throws Exception */
+	//api호출하는 컨트롤러
 	@GetMapping("/tourList")
 	public JsonResult<?> fetch(String keyword){
 			List<TourListDto> list = null;
@@ -43,7 +43,7 @@ public class TourListController {
 		    
 			return new JsonResult<>(true, "성공", list);
 	}
-	
+	//사용자가 좋아요누른 관광지 추출하는 컨트롤러
 	@GetMapping("/likedList")
 	public JsonResult<?> getLikedList(Long plannerNo){
 		

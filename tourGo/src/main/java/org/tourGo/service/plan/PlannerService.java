@@ -44,12 +44,7 @@ public class PlannerService {
 	
 
 	
-	
-	public Planner find(Long no) {
-		Optional<Planner> _planner = plannerRepo.findById(no);
-		Planner planner = _planner.orElse(null);
-		return planner;
-	}
+	//plannerNo로 planner를 찾고 planner.getUser를 통해 user반환
 	public User getUserByPlannerNo(Long no) {
 		Optional<Planner> _planner = plannerRepo.findById(no);
 		Planner planner = _planner.orElse(null);
@@ -58,10 +53,7 @@ public class PlannerService {
 		return user;
 	}
 
-	
-	
-	
-	
+	//상세일정을 저장하는 버튼을 누를때 첫번째 관광지의 이미지를 planner 대표 이미지로 설정하는 메서드
 	@Transactional
 	public void updateImage(Planner planner) {
 		BooleanBuilder builder = new BooleanBuilder();
@@ -79,10 +71,9 @@ public class PlannerService {
 		
 		
 	}
-	/**사용자가 좋아요한 플래너 추출하는 메서드*/
+	//사용자가 좋아요한 플래너 추출하는 메서드
 	public List<Planner> getPlannerLiked(Long userNo){
-		//Optional<PlanUidEntity> wrapEntity = uidRepo.findByUserNo(userNo);
-		//List<PlanUidEntity> uidEntity = (List<PlanUidEntity>) wrapEntity.orElse(null);
+		
 		List<PlanUidEntity> uidEntity = uidRepo.findByUserNo(userNo);
 		System.out.println("유아이디");
 		System.out.println(userNo);
@@ -100,8 +91,8 @@ public class PlannerService {
 		
 		return list;
 	}
-	
-	public List<PlannerRq> userPlanner(User user)	{ //db로부터 플래너 번호를 내림차순하여 planner List형태로 변환하는 메서드
+	//db로부터 플래너 번호를 내림차순하여 plannerRq List형태로 변환하는 메서드
+	public List<PlannerRq> userPlanner(User user)	{ 
 
 
 		List<Planner> list = plannerRepo.findAllByUser(user,Sort.by(Sort.Direction.DESC,"plannerNo"));
@@ -115,6 +106,7 @@ public class PlannerService {
 		
 		return list2;
 	}
+	//사용자가 planner를 수정하였을때 업데이트하는 메서드
 	@Transactional
 	public Planner updatePlanner(PlannerRq request) {
 		System.out.println(request);
@@ -139,13 +131,7 @@ public class PlannerService {
 		
 	}
 	
-//	public List<Planner> plannerList(User user){
-//		List<Planner> list = plannerRepo.findAllByUser(user,Sort.by(Sort.Direction.DESC,"plannerNo"));
-//
-//		
-//		return list;
-//	}
-	
+
 	
 	public Page<Planner> plannerList(Pageable pageable,User user){
 		BooleanBuilder builder = new BooleanBuilder();
@@ -160,7 +146,7 @@ public class PlannerService {
 	}
 	
 	
-	public Page<Planner> plannerList2(Pageable pageable) {
+	public Page<Planner> plannerList(Pageable pageable) {
 		BooleanBuilder builder = new BooleanBuilder();
 		QPlanner planner = QPlanner.planner;
 		builder.and(planner.open.eq(true));
@@ -169,14 +155,7 @@ public class PlannerService {
 		
 		return list;
 	}
-	
-	public List<Planner> plannerList3() {
-		
-		
-		return plannerRepo.findAll();
-		
 
-	}
 	//좋아요 탑3 추출
 	public List<Planner> topLikedPlanner(){
 		Sort sort = Sort.by(Sort.Order.desc("totalLikes"),Sort.Order.asc("plannerNo"));
@@ -195,7 +174,7 @@ public class PlannerService {
 		return list; 
 	}
 	
-	public Page<Planner> plannerSearchList2(String searchKeyword, Pageable pageable) {
+	public Page<Planner> plannerSearchList(String searchKeyword, Pageable pageable) {
 		
 		BooleanBuilder builder = new BooleanBuilder();
 		QPlanner planner = QPlanner.planner;
@@ -207,17 +186,11 @@ public class PlannerService {
 	
 	
 	
-	
+	//planner DB에 저장하는 메서드
 	public Planner insertPlanner(PlannerRq plannerRq,User user) {
 		
 		
-		/**LocalDate sdate = (plannerRq.getSdate() == null)?LocalDate.now():plannerRq.getSdate();
-		Integer day = plannerRq.getDay();
-		LocalDate edate = sdate.plusDays(day);
-		Planner planner = Planner.builder().title(plannerRq.getTitle()).day(day).sdate(sdate).edate(edate).memo(plannerRq.getMemo())
-		.planSize(plannerRq.getPlanSize()).planType(plannerRq.getPlanType()).user(user).heart(plannerRq.getHeart())
-		.hit(plannerRq.getHit()).image(plannerRq.getImage())
-		.build();*/
+
 		Planner planner = PlannerService.toEntity(plannerRq, user);
 	
 		planner = plannerRepo.save(planner);
@@ -243,15 +216,15 @@ public class PlannerService {
 		return true;
 	}
 	
-	
-	public Planner getPlanner(Long id) {
+	//plannerNo를 받아 planner 반환
+	public Planner getPlanner(Long no) {
 		
-		Planner planner = plannerRepo.findById(id).orElse(null);
-		
-		
+		Optional<Planner> _planner = plannerRepo.findById(no);
+		Planner planner = _planner.orElse(null);
 		return planner;
+		
 	}
-	
+	//toDto toEntity 메서드s
 	public static PlannerRq toDto(Planner planner) {
 		
 		int day = planner.getDay();
@@ -287,7 +260,7 @@ public class PlannerService {
 		return planner;
 		
 	}
-
+	//toDto toEntity 메서드e
 
 
 

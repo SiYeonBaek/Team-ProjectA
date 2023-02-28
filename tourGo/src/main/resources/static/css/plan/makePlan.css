@@ -1,7 +1,4 @@
-*{
-	box-sizing: border-box;
 
-}
 button label{font-family: 'Montserrat', sans-serif;}
 .button-event{ display:block;
       		  cursor: pointer;      
@@ -44,7 +41,14 @@ button label{font-family: 'Montserrat', sans-serif;}
 .left_items{
 	height: 100%; width: 20%; display: grid;grid-template-rows: 1fr 1fr;
 }
-
+.selected input[type=time]{
+  width: 100px;
+  height: 20px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(233, 233, 233);}
 
 
 .left_items{height: 70%;}
