@@ -36,7 +36,7 @@ import org.tourGo.models.plan.entity.PlanDetails;
 import org.tourGo.models.plan.entity.Planner;
 import org.tourGo.models.plan.entity.like.PlanUidEntity;
 import org.tourGo.models.plan.entity.like.PlanUidRequest;
-import org.tourGo.models.plan.entity.PlanDetails.PlanDetailsBuilder;
+
 import org.tourGo.models.user.UserRepository;
 import org.tourGo.service.plan.PlanDetailsRepository;
 import org.tourGo.service.plan.PlanDetailsService;
